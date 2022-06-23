@@ -12,7 +12,12 @@ import java.util.function.Consumer;
 public class CodeGenerator {
     public static void main(String[] args) {
         List<String> tables = new ArrayList<>();
-        tables.add("user");
+//        tables.add("user");
+//        tables.add("supply");
+//        tables.add("tax");
+        tables.add("pay_rule");
+        tables.add("supply_rule");
+        tables.add("tax_rule");
 
         FastAutoGenerator.create("jdbc:mysql://localhost:3306/test","root","root")
                 .globalConfig(builder -> {
@@ -21,7 +26,6 @@ public class CodeGenerator {
                             .enableSwagger()           //开启swagger
                             .commentDate("yyyy-MM-dd")
                             .fileOverride();            //开启覆盖之前生成的文件
-
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.company")

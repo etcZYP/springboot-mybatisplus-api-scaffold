@@ -101,7 +101,16 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     //解决跨域问题
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        //registry.addMapping("/**");
+        // 设置允许跨域的路由
+        registry.addMapping("/**")
+                // 设置允许跨域请求的域名------------修改此行
+                .allowedOriginPatterns("*")
+                // 是否允许证书（cookies）
+                .allowCredentials(true)
+                // 设置允许的方法
+                .allowedMethods("*")
+                // 跨域允许时间
+                .maxAge(3600);
     }
 
     //添加拦截器
